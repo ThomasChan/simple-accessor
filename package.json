@@ -1,0 +1,69 @@
+{
+  "name": "simple-accessor",
+  "description": "blazingly fast get property of object/array, partial functional of lodash get, not support path with `[]`, only `.`",
+  "homepage": "https://github.com/thomaschan/simple-accessor#readme",
+  "type": "module",
+  "types": "index.d.ts",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
+  "browser": "dist/umd/index.js",
+  "keywords": [
+    "get",
+    "simple",
+    "lodash get",
+    "fast"
+  ],
+  "version": "1.0.0",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "release-it": "15.6.0",
+    "rimraf": "^5.0.0",
+    "rollup": "^3.16.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.9.5"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/types/index.d.ts",
+        "default": "./dist/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/types/index.d.ts",
+        "default": "./dist/cjs/index.cjs"
+      },
+      "default": {
+        "types": "./dist/umd/types/index.d.ts",
+        "default": "./dist/umd/index.js"
+      }
+    }
+  },
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs && npm run build:umd && npm run build:min",
+    "build:cjs": "NODE_ENV=production rollup -c rollup/config.cjs.js && tsc -p ./tsconfig/cjs.json",
+    "build:esm": "NODE_ENV=production rollup -c rollup/config.esm.js && tsc -p ./tsconfig/esm.json",
+    "build:min": "NODE_ENV=production rollup -c rollup/config.min.js && tsc -p ./tsconfig/min.json",
+    "build:umd": "NODE_ENV=production rollup -c rollup/config.umd.js && tsc -p ./tsconfig/umd.json",
+    "clean": "rimraf dist",
+    "dist": "npm run clean && npm run build",
+    "release": "release-it",
+    "release:beta": "release-it --config=.release-it.beta.json",
+    "release:dry": "release-it --dry-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thomaschan/simple-accessor.git"
+  },
+  "author": "Thomas Chan. <chenjunhao5818@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thomaschan/simple-accessor/issues"
+  },
+  "contributors": [
+    {
+      "name": "Thomas Chan",
+      "email": "chenjunhao5818@gmail.com"
+    }
+  ]
+}
