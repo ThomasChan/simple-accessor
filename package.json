@@ -13,7 +13,7 @@
     "lodash get",
     "fast"
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^11.0.0",
